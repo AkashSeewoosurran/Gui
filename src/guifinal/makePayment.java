@@ -124,6 +124,7 @@ public class makePayment extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guifinal/images/icons8_Go_Back_48px.png"))); // NOI18N
 
         jLabel6.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(36, 185, 115));
         jLabel6.setText("Customer Name:");
 
@@ -134,6 +135,7 @@ public class makePayment extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel8.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(36, 185, 115));
         jLabel8.setText("Job ID:");
 
@@ -144,6 +146,7 @@ public class makePayment extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(36, 185, 115));
         jLabel9.setText("Total Amount:");
 
