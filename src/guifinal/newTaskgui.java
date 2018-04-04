@@ -55,7 +55,7 @@ public class newTaskgui extends javax.swing.JFrame {
 
         jLabel20.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Payment");
+        jLabel20.setText("New Task");
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guifinal/images/Tasklist1_50px.png"))); // NOI18N
 
