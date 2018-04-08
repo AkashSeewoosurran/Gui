@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package chatsystem.guifinal;
 
 import chatsystem.network.messageListener;
@@ -15,7 +15,7 @@ import AppPackage.AnimationClass;
  * @author Akash
  */
 public class animation extends javax.swing.JFrame implements writableGui{
-
+    
     /**
      * Creates new form animation
      */
@@ -26,10 +26,10 @@ public class animation extends javax.swing.JFrame implements writableGui{
         msg.setVisible(false);
         port.setVisible(false);
         send.setVisible(false);
-      chatArea.setVisible(false);
-      receivePort.setVisible(false);
+        chatArea.setVisible(false);
+        receivePort.setVisible(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -140,17 +140,22 @@ public class animation extends javax.swing.JFrame implements writableGui{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
-      AnimationClass ac = new AnimationClass();
-      ac.jLabelXRight(0, 400, 100, 200, jLabel1);
-      ac.jLabelXLeft(400, 0, 100, 200, jLabel1);
-      if(jLabel1 != null){
-          listener.setVisible(true);
-        msg.setVisible(true);
-        port.setVisible(true);
-        send.setVisible(true);
-      chatArea.setVisible(true);
-      receivePort.setVisible(true);
-      }
+        AnimationClass ac = new AnimationClass();
+        ac.jLabelXRight(0, 400, 100, 200, jLabel1);
+        ac.jLabelXLeft(400, 0, 100, 200, jLabel1);
+        if(jLabel1 != null){
+            try {
+                
+                listener.setVisible(true);
+                msg.setVisible(true);
+                port.setVisible(true);
+                send.setVisible(true);
+                chatArea.setVisible(true);
+                receivePort.setVisible(true);
+                
+            } catch (Exception e) {
+            }
+        }
     }//GEN-LAST:event_jLabel1MouseReleased
 
     private void ipaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipaddressActionPerformed
@@ -160,7 +165,7 @@ public class animation extends javax.swing.JFrame implements writableGui{
     private void portActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_portActionPerformed
-        messageListener listen;
+    messageListener listen;
     private void listenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenerActionPerformed
         listen = new messageListener(this, Integer.parseInt (receivePort.getText()));
         listen.start();
@@ -177,15 +182,15 @@ public class animation extends javax.swing.JFrame implements writableGui{
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         if(jLabel1 == null){
-        listener.setVisible(false);
-        msg.setVisible(false);
-        port.setVisible(false);
-        send.setVisible(false);
-      chatArea.setVisible(false);
-      receivePort.setVisible(false);
+            listener.setVisible(false);
+            msg.setVisible(false);
+            port.setVisible(false);
+            send.setVisible(false);
+            chatArea.setVisible(false);
+            receivePort.setVisible(false);
         }
     }//GEN-LAST:event_jLabel1MouseClicked
-               
+    
     /**
      * @param args the command line arguments
      */
@@ -193,8 +198,8 @@ public class animation extends javax.swing.JFrame implements writableGui{
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -212,7 +217,7 @@ public class animation extends javax.swing.JFrame implements writableGui{
             java.util.logging.Logger.getLogger(animation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -233,11 +238,11 @@ public class animation extends javax.swing.JFrame implements writableGui{
     private javax.swing.JTextField receivePort;
     private javax.swing.JButton send;
     // End of variables declaration//GEN-END:variables
-
+    
     @Override
     public void write(String s) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-   
+    
+    
 }
