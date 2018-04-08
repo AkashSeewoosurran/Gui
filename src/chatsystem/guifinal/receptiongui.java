@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package chatsystem.guifinal;
 
 import chatsystem.network.messageListener;
@@ -16,15 +16,16 @@ import javax.swing.JPanel;
  * @author Akash
  */
 public class receptiongui extends javax.swing.JFrame implements writableGui {
-
+    
     /**
      * Creates new form receptiongui
      */
     public receptiongui() {
         initComponents();
+        chatArea.setEditable(false);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +80,7 @@ public class receptiongui extends javax.swing.JFrame implements writableGui {
             }
         });
 
-        port.setText("1234");
+        port.setText("8878");
         port.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 portActionPerformed(evt);
@@ -336,11 +337,14 @@ public class receptiongui extends javax.swing.JFrame implements writableGui {
         // TODO add your handling code here:
     }//GEN-LAST:event_ipaddressActionPerformed
     
-       messageListener listen;
+    messageListener listen;
     
     private void listenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenerActionPerformed
+        
         listen = new messageListener(this, Integer.parseInt (receivePort.getText()));
+        
         listen.start();
+        
     }//GEN-LAST:event_listenerActionPerformed
 
     private void portActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portActionPerformed
@@ -350,18 +354,22 @@ public class receptiongui extends javax.swing.JFrame implements writableGui {
     private void receivePortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receivePortActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_receivePortActionPerformed
-
+    
     private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
-       messageTransmitter transmitter = new messageTransmitter(msg.getText(), ipaddress.getText(),Integer.parseInt(port.getText()));
-       transmitter.start();
+        chatArea.append("receptionist: " + msg.getText());
+        messageTransmitter transmitter = new messageTransmitter("receptionist: " + msg.getText(), ipaddress.getText(),Integer.parseInt(port.getText()));
+        transmitter.start();
+        
+        
+        
     }//GEN-LAST:event_sendActionPerformed
-
-        public void setColor(JPanel panel){
+    
+    public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(153,153,153));
     }
     public void resetColor(JPanel panel){
-    panel.setBackground(new java.awt.Color(204,204,204));
-}
+        panel.setBackground(new java.awt.Color(204,204,204));
+    }
     /**
      * @param args the command line arguments
      */
@@ -369,8 +377,8 @@ public class receptiongui extends javax.swing.JFrame implements writableGui {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -388,7 +396,7 @@ public class receptiongui extends javax.swing.JFrame implements writableGui {
             java.util.logging.Logger.getLogger(receptiongui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -421,9 +429,9 @@ public class receptiongui extends javax.swing.JFrame implements writableGui {
     private javax.swing.JTextField receivePort;
     private javax.swing.JButton send;
     // End of variables declaration//GEN-END:variables
-
+    
     @Override
     public void write(String s) {
-    chatArea.append(s + System.lineSeparator());
-    }
-}
+        chatArea.append("\n" + s);    
+    } 
+ }

@@ -12,5 +12,8 @@ package chatsystem.network;
 public interface writableGui {
     
     void write(String s);
+    
+    
+    
            
 }

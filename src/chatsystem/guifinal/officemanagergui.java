@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package chatsystem.guifinal;
 
 import chatsystem.network.messageListener;
@@ -17,15 +17,16 @@ import AppPackage.AnimationClass;
  * @author Akash
  */
 public class officemanagergui extends javax.swing.JFrame implements writableGui {
-
+    
     /**
      * Creates new form officemanagergui
      */
     public officemanagergui() {
         initComponents();
+        chatArea.setEditable(false);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,13 +78,13 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
         jLabel17 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         ipaddress = new javax.swing.JTextField();
-        port = new javax.swing.JTextField();
-        listener = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         chatArea = new javax.swing.JTextArea();
         msg = new javax.swing.JTextField();
         send = new javax.swing.JButton();
         receivePort = new javax.swing.JTextField();
+        listener = new javax.swing.JButton();
+        port = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -156,11 +157,10 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
                 .addGap(20, 20, 20)
                 .addComponent(jLabel23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel19))
+                    .addComponent(jLabel20)
                     .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addContainerGap())
@@ -562,10 +562,26 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
             }
         });
 
-        port.setText("1234");
-        port.addActionListener(new java.awt.event.ActionListener() {
+        chatArea.setColumns(20);
+        chatArea.setRows(5);
+        jScrollPane1.setViewportView(chatArea);
+
+        send.setText("send");
+        send.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sendMouseClicked(evt);
+            }
+        });
+        send.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                portActionPerformed(evt);
+                sendActionPerformed(evt);
+            }
+        });
+
+        receivePort.setText("8878");
+        receivePort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receivePortActionPerformed(evt);
             }
         });
 
@@ -576,21 +592,10 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
             }
         });
 
-        chatArea.setColumns(20);
-        chatArea.setRows(5);
-        jScrollPane1.setViewportView(chatArea);
-
-        send.setText("send");
-        send.addActionListener(new java.awt.event.ActionListener() {
+        port.setText("8877");
+        port.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendActionPerformed(evt);
-            }
-        });
-
-        receivePort.setText("8877");
-        receivePort.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                receivePortActionPerformed(evt);
+                portActionPerformed(evt);
             }
         });
 
@@ -601,24 +606,25 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(receivePort, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ipaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(port, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listener)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(receivePort, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ipaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(port, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(listener))
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addComponent(msg, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(send)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(send)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))
+                        .addContainerGap())))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -626,10 +632,10 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ipaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(receivePort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(port, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listener)
-                    .addComponent(receivePort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(listener))
+                .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -828,26 +834,33 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
     private void portActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_portActionPerformed
-        messageListener listen;
+    messageListener listen;
     private void listenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenerActionPerformed
         listen = new messageListener(this, Integer.parseInt (receivePort.getText()));
         listen.start();
     }//GEN-LAST:event_listenerActionPerformed
 
     private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
-        messageTransmitter transmitter = new messageTransmitter(msg.getText(), ipaddress.getText(),Integer.parseInt(port.getText()));
+        chatArea.append("Office Manager: " + msg.getText() + "\n");
+        messageTransmitter transmitter = new messageTransmitter("OfficeManager: " + msg.getText(), ipaddress.getText(),Integer.parseInt(port.getText()));
         transmitter.start();
+        
     }//GEN-LAST:event_sendActionPerformed
 
     private void receivePortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receivePortActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_receivePortActionPerformed
+
+    private void sendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendMouseClicked
+        
+    }//GEN-LAST:event_sendMouseClicked
     public void setColor(JPanel panel){
         panel.setBackground(new java.awt.Color(153,153,153));
     }
     public void resetColor(JPanel panel){
-    panel.setBackground(new java.awt.Color(204,204,204));
-}
+        panel.setBackground(new java.awt.Color(204,204,204));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -855,8 +868,8 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -874,7 +887,7 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
             java.util.logging.Logger.getLogger(officemanagergui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -934,9 +947,11 @@ public class officemanagergui extends javax.swing.JFrame implements writableGui 
     private javax.swing.JTextField receivePort;
     private javax.swing.JButton send;
     // End of variables declaration//GEN-END:variables
-
+    
     @Override
     public void write(String s) {
+        
         chatArea.append(s + System.lineSeparator());
+        
     }
 }

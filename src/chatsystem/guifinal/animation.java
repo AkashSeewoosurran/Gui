@@ -5,17 +5,29 @@
  */
 package chatsystem.guifinal;
 
+import chatsystem.network.messageListener;
+import chatsystem.network.messageTransmitter;
+import chatsystem.network.writableGui;
+import AppPackage.AnimationClass;
+
 /**
  *
  * @author Akash
  */
-public class animation extends javax.swing.JFrame {
+public class animation extends javax.swing.JFrame implements writableGui{
 
     /**
      * Creates new form animation
      */
     public animation() {
         initComponents();
+        
+        listener.setVisible(false);
+        msg.setVisible(false);
+        port.setVisible(false);
+        send.setVisible(false);
+      chatArea.setVisible(false);
+      receivePort.setVisible(false);
     }
 
     /**
@@ -27,22 +39,153 @@ public class animation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        receivePort = new javax.swing.JTextField();
+        ipaddress = new javax.swing.JTextField();
+        port = new javax.swing.JTextField();
+        listener = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        chatArea = new javax.swing.JTextArea();
+        msg = new javax.swing.JTextField();
+        send = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1018, 604));
+        setMinimumSize(new java.awt.Dimension(1018, 604));
+
+        jPanel3.setBackground(new java.awt.Color(32, 33, 35));
+        jPanel3.setMaximumSize(new java.awt.Dimension(1018, 604));
+        jPanel3.setMinimumSize(new java.awt.Dimension(1018, 604));
+        jPanel3.setLayout(null);
+
+        receivePort.setText("8877");
+        receivePort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receivePortActionPerformed(evt);
+            }
+        });
+        jPanel3.add(receivePort);
+        receivePort.setBounds(60, 280, 49, 24);
+
+        ipaddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ipaddressActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ipaddress);
+        ipaddress.setBounds(110, 280, 166, 24);
+
+        port.setText("1234");
+        port.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                portActionPerformed(evt);
+            }
+        });
+        jPanel3.add(port);
+        port.setBounds(280, 280, 42, 24);
+
+        listener.setText("Listen");
+        listener.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listenerActionPerformed(evt);
+            }
+        });
+        jPanel3.add(listener);
+        listener.setBounds(330, 280, 65, 32);
+
+        chatArea.setColumns(20);
+        chatArea.setRows(5);
+        jScrollPane1.setViewportView(chatArea);
+
+        jPanel3.add(jScrollPane1);
+        jScrollPane1.setBounds(30, 320, 354, 208);
+        jPanel3.add(msg);
+        msg.setBounds(40, 540, 290, 24);
+
+        send.setText("send");
+        send.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendActionPerformed(evt);
+            }
+        });
+        jPanel3.add(send);
+        send.setBounds(340, 540, 58, 32);
+
+        jLabel1.setBackground(new java.awt.Color(51, 255, 255));
+        jLabel1.setOpaque(true);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel1MouseReleased(evt);
+            }
+        });
+        jPanel3.add(jLabel1);
+        jLabel1.setBounds(0, 280, 20, 130);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseReleased
+      AnimationClass ac = new AnimationClass();
+      ac.jLabelXRight(0, 400, 100, 200, jLabel1);
+      ac.jLabelXLeft(400, 0, 100, 200, jLabel1);
+      if(jLabel1 != null){
+          listener.setVisible(true);
+        msg.setVisible(true);
+        port.setVisible(true);
+        send.setVisible(true);
+      chatArea.setVisible(true);
+      receivePort.setVisible(true);
+      }
+    }//GEN-LAST:event_jLabel1MouseReleased
+
+    private void ipaddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipaddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ipaddressActionPerformed
+
+    private void portActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_portActionPerformed
+        messageListener listen;
+    private void listenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenerActionPerformed
+        listen = new messageListener(this, Integer.parseInt (receivePort.getText()));
+        listen.start();
+    }//GEN-LAST:event_listenerActionPerformed
+
+    private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
+        messageTransmitter transmitter = new messageTransmitter("receptionist" + " : " + msg.getText(), ipaddress.getText(),Integer.parseInt(port.getText()));
+        transmitter.start();
+    }//GEN-LAST:event_sendActionPerformed
+
+    private void receivePortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receivePortActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_receivePortActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        if(jLabel1 == null){
+        listener.setVisible(false);
+        msg.setVisible(false);
+        port.setVisible(false);
+        send.setVisible(false);
+      chatArea.setVisible(false);
+      receivePort.setVisible(false);
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+               
     /**
      * @param args the command line arguments
      */
@@ -79,5 +222,22 @@ public class animation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea chatArea;
+    private javax.swing.JTextField ipaddress;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton listener;
+    private javax.swing.JTextField msg;
+    private javax.swing.JTextField port;
+    private javax.swing.JTextField receivePort;
+    private javax.swing.JButton send;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void write(String s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }

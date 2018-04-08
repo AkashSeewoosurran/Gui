@@ -6,6 +6,7 @@
 package chatsystem.network;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +35,7 @@ public class messageTransmitter extends Thread{
         try {
             Socket s = new Socket(hostname, port);
             s.getOutputStream().write(message.getBytes());
+            
             s.close();
         } catch (IOException ex) {
             Logger.getLogger(messageTransmitter.class.getName()).log(Level.SEVERE, null, ex);
