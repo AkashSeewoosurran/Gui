@@ -168,7 +168,7 @@ public class newlogin extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(940, 210, 41, 16);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akash\\Desktop\\5514198-canon-wallpapers.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chatsystem/guifinal/images/5514198-canon-wallpapers.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 1965, 1080);

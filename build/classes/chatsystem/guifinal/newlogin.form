@@ -238,7 +238,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Akash\Desktop\5514198-canon-wallpapers.jpg"/>
+          <Image iconType="3" name="/chatsystem/guifinal/images/5514198-canon-wallpapers.jpg"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel2"/>
       </Properties>
