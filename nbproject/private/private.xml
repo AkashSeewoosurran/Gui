@@ -4,9 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Akash/Documents/guitp/guiV1.0/src/chatsystem/guifinal/officemanagergui.java</file>
-            <file>file:/C:/Users/Akash/Documents/guitp/guiV1.0/src/chatsystem/network/messageTransmitter.java</file>
-            <file>file:/C:/Users/Akash/Documents/guitp/guiV1.0/src/chatsystem/network/messageListener.java</file>
             <file>file:/C:/Users/Akash/Documents/guitp/guiV1.0/src/chatsystem/guifinal/receptiongui.java</file>
+            <file>file:/C:/Users/Akash/Documents/guitp/guiV1.0/src/chatsystem/guifinal/liveChat.java</file>
+            <file>file:/C:/Users/Akash/Documents/guitp/guiV1.0/src/chatsystem/guifinal/individualReport.java</file>
         </group>
     </open-files>
 </project-private>
